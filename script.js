@@ -1,31 +1,31 @@
 var wiki = "http://en.wikipedia.org/wiki/";
 
 var esymbol = [
-    " ","H","He","Li","Be","B","C","N","O","F","Ne",
-    "Na","Mg","Al","Si","P","S","Cl","Ar","K","Ca",
-    "Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu","Zn",
-    "Ga","Ge","As","Se","Br","Kr","Rb","Sr","Y","Zr",
-    "Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn",
-    "Sb","Te","I","Xe","Cs","Ba","La","Ce","Pr", "Nd",
+  " ","H","He","Li","Be","B","C","N","O","F","Ne",
+  "Na","Mg","Al","Si","P","S","Cl","Ar","K","Ca",
+  "Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu","Zn",
+  "Ga","Ge","As","Se","Br","Kr","Rb","Sr","Y","Zr",
+  "Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn",
+  "Sb","Te","I","Xe","Cs","Ba","La","Ce","Pr", "Nd",
 	"Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb",
 	"Lu","Hf","Ta","W","Re","Os","Ir","Pt","Au","Hg",
 	"Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Ac","Th",
 	"Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm",
 	"Md","No","Lr","Rf","Db","Sg","Bh","Hs","Mt","Ds",
-	"Rg","Cn","Uut","Fl","Uup","Lv","Uus","Uuo"
+	"Rg","Cn","Nh","Fl","Mc","Lv","Ts","Og"
 ];
-    
+
 var ename = [
-    " ","Hydrogen","Helium","Lithium","Beryllium","Boron","Carbon",
-    "Nitrogen","Oxygen","Fluorine","Neon","Sodium","Magnesium",
-    "Aluminium","Silicon","Phosphorus","Sulfur","Chlorine","Argon",
-    "Potassium","Calcium","Scandium","Titanium","Vanadium","Chromium",
-    "Manganese","Iron","Cobalt","Nickel","Copper","Zinc",
-    "Gallium","Germanium","Arsenic","Selenium","Bromine","Krypton",
-    "Rubidium","Strontium","Yttrium","Zirconium","Niobium","Molybdenum",
-    "Technetium","Ruthenium","Rhodium","Palladium","Silver","Cadmium",
-    "Indium","Tin","Antimony","Tellurium","Iodine","Xenon",
-    "Caesium","Barium","Lanthanum","Cerium","Praseodymium","Neodymium",
+  " ","Hydrogen","Helium","Lithium","Beryllium","Boron","Carbon",
+  "Nitrogen","Oxygen","Fluorine","Neon","Sodium","Magnesium",
+  "Aluminium","Silicon","Phosphorus","Sulfur","Chlorine","Argon",
+  "Potassium","Calcium","Scandium","Titanium","Vanadium","Chromium",
+  "Manganese","Iron","Cobalt","Nickel","Copper","Zinc",
+  "Gallium","Germanium","Arsenic","Selenium","Bromine","Krypton",
+  "Rubidium","Strontium","Yttrium","Zirconium","Niobium","Molybdenum",
+  "Technetium","Ruthenium","Rhodium","Palladium","Silver","Cadmium",
+  "Indium","Tin","Antimony","Tellurium","Iodine","Xenon",
+  "Caesium","Barium","Lanthanum","Cerium","Praseodymium","Neodymium",
 	"Promethium","Samarium","Europium","Gadolinium","Terbium","Dysprosium",
 	"Holmium","Erbium","Thullium","Ytterbium","Lutetium",
 	"Hafnium","Tantalum","Tungsten","Rhenium","Osmium","Iridium",
@@ -34,9 +34,10 @@ var ename = [
 	"Protactinium","Uranium","Neptunium","Plutonium","Americium","Curium",
 	"Berkelium","Californium","Einsteinium","Fermium","Mendelevium","Nobelium",
 	"Lawrencium","Rutherfordium","Dubnium","Seaborgium","Bohrium","Hassium",
-	"Meitnerium","Darmstadtium","Roentgenium","Copernicium","Ununtrium","Flerovium",
-	"Ununpentium","Livermorium","Ununseptium","Ununoctium"
+	"Meitnerium","Darmstadtium","Roentgenium","Copernicium","Nihonium","Flerovium",
+	"Moscovium","Livermorium","Tennessine","Oganesson"
 ];
+
 //Double check all mass values. Quite a few are probably wrong
 var emass = [
     " ","1.0079","4.0026","6.941","9.0122","10.811","12.011","14.007","15.999","18.998","20.180",
@@ -52,7 +53,7 @@ var emass = [
 	"258.1","259.101","[262]","[261]","[262]","[266]","[264]","[269]","[268]","[269]",
 	"[272]","[277]","?","[289]","?","[298]","?","?"
 ];
-    
+
 var egroup = [
 	9,
     6,8,
@@ -169,7 +170,7 @@ function update(repeat) {
 			sp.innerHTML = esymbol[95 - 34 * Number(post)];
 			np.innerHTML = ename[95 - 34 * Number(post)];
 			mp.innerHTML = emass[95 - 34 * Number(post)];
-			
+
 		} else {
 			ep.style.visibility = "hidden";
 		}
@@ -179,7 +180,7 @@ function update(repeat) {
 		ah.innerHTML = h;
 		am.innerHTML = m;
 		as.innerHTML = s;
-		
+
 		if (sname) {
 			nh.innerHTML = ename[h];
 			nm.innerHTML = ename[m];
@@ -189,7 +190,7 @@ function update(repeat) {
 		} else {
 			hideElements([nh, nm, ns, np]);
 		}
-		
+
 		if (smass) {
 			mh.innerHTML = emass[h];
 			mm.innerHTML = emass[m];
@@ -199,7 +200,7 @@ function update(repeat) {
 		} else {
 			hideElements([mh, mm, ms, mp]);
 		}
-		
+
 		if (sgroup) {
 			groupUpdate(egroup[h], eh);
 			groupUpdate(egroup[m], em);
@@ -223,9 +224,9 @@ function update(repeat) {
 			} else if (e === 61) {
 				e = 94
 			}
-			
+
 		}
-		
+
 		if (!sfull) {
 			if (h > 12) {
 				h -= 12;
@@ -241,12 +242,12 @@ function update(repeat) {
 				elements[95].style.backgroundColor = "#ed1c24";
 			}
 		}
-		
+
 		if (h > 0) {
 			elements[h].style.borderColor = "#00599d";
 			elements[h].style.backgroundColor = "#0066b3";
 		}
-		
+
 		if (m > 0) {
 			if (m !== h) {
 				elements[m].style.borderColor = "#009353";
@@ -256,7 +257,7 @@ function update(repeat) {
 				csymbol.style.color = "#009353";
 			}
 		}
-		
+
 		if (s > 0) {
 			if (s !== h && s !== m) {
 				elements[s].style.borderColor = "#ccbe00";
