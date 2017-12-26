@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<title>Periodic Clock</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
@@ -10,40 +11,39 @@
 		<div id="about", class="info", onclick="showabout = !showabout; if (showabout) {aboutbox.style.visibility = 'visible'} else {aboutbox.style.visibility = 'hidden'};">
 			<p class="boxtext">About</p>
 		</div>
-		
+
 		<div id="legend", class="info", onmouseenter="showElements([hour, minute, second, period])", onmouseleave="hideElements([hour, minute, second, period])">
 			<p class="boxtext">Legend</p>
 		</div>
-		
+
 		<div id="aboutbox">
 			<p id="aboutboxtext">
 			A periodic clock that displays time with elements, with the atomic number indicating hours, minutes, and seconds.<br>
-			Click table to switch to a periodic table visualization of the current time. Click on any element to visit its wiki page.<br>
-			If you enjoy this clock, you can support it <a href="https://www.google.ca/", target="_blank">here.</a><br>
+			Click the Table button to switch to a periodic table visualization of the current time. Click on any element to visit its wiki page.<br>
 			</p>
 		</div>
-		
+
 		<div id="display", class="info", onclick="changeDisplay(this.childNodes[1]);">
 			<p class="boxtext">Table</p>
 		</div>
-		
+
 		<div id="hour", class="group">
 			<p class="boxtext">Hour</p>
 		</div>
-		
+
 		<div id="minute", class="group">
 			<p class="boxtext">Minute</p>
 		</div>
-		
+
 		<div id="second", class="group">
 			<p class="boxtext">Second</p>
 		</div>
-		
+
 		<div id="period", class="group">
 			<p class="boxtext">AM/PM</p>
 		</div>
-		
-		
+
+
 		<!-- Main digital clock -->
 		<div id="clock">
 			<div id="eh", class="periodic", onclick="window.open(wiki + ename[h])">
@@ -52,21 +52,21 @@
 				<span><p id="nh", class="name"></p></span>
 				<span><p id="mh", class="mass"></p></span>
 			</div>
-			
+
 			<div id="em", class="periodic", onclick="window.open(wiki + ename[m])">
 				<span><p id="am", class="atomic"></p></span>
 				<span><p id="sm", class="symbol"></p></span>
 				<span><p id="nm", class="name"></p></span>
 				<span><p id="mm", class="mass"></p></span>
 			</div>
-			
+
 			<div id="es", class="periodic", onclick="window.open(wiki + ename[s])">
 				<span><p id="as", class="atomic"></p></span>
 				<span><p id="ss", class="symbol"></p></span>
 				<span><p id="ns", class="name"></p></span>
 				<span><p id="ms", class="mass"></p></span>
 			</div>
-		
+
 			<div id="ep", onclick="window.open(wiki + ename[95 - 34 * Number(post)])">
 				<span><p id="ap"></p></span>
 				<span><p id="sp"></p></span>
@@ -281,55 +281,57 @@
 		<div id="bfull", class="setting off", onclick="sfull = !sfull; this.className = 'setting ' + state[Number(sfull)]; update(false)">
 			<p class="boxtext">24 Hour</p>
 		</div>
-		
+
 		<div id="bname", class="setting off", onclick="sname = !sname; this.className = 'setting ' + state[Number(sname)]; update(false)">
 			<p class="boxtext">Name</p>
 		</div>
-		
+
 		<div id="bmass", class="setting off", onclick="smass = !smass; this.className = 'setting ' + state[Number(smass)]; update(false)">
 			<p class="boxtext">Mass</p>
 		</div>
-		
+
 		<div id="bgroup", class="setting on", onmouseenter="showElements([alkali,alkaline,rare,transition,other,metalloid,nonmetal,halogen,noble])", onmouseleave="hideElements([alkali,alkaline,rare,transition,other,metalloid,nonmetal,halogen,noble])", onclick="sgroup = !sgroup; this.className = 'setting ' + state[Number(sgroup)]; update(false)">
 			<p class="boxtext">Groups</p>
 		</div>
+
 		<!-- Element groups -->
 		<div id="alkali", class="group">
-			<span><p class="groupsmall">Alkali Metals</p></span>
+			<span><p class="group-small-text">Alkali Metals</p></span>
 		</div>
-		
+
 		<div id="alkaline", class="group">
-			<span><p class="grouplarge">Alkaline Earth Metals</p></span>
+			<span><p class="group-large-text">Alkaline Earth Metals</p></span>
 		</div>
-		
+
 		<div id="rare", class="group">
-			<span><p class="grouplarge">Rare Earth Metals</p></span>
+			<span><p class="group-large-text">Rare Earth Metals</p></span>
 		</div>
-		
+
 		<div id="transition", class="group">
-			<span><p class="grouplarge">Transition Metals</p></span>
+			<span><p class="group-large-text">Transition Metals</p></span>
 		</div>
-		
+
 		<div id="other", class="group">
-			<span><p class="groupsmall">Other Metals</p></span>
+			<span><p class="group-small-text">Other Metals</p></span>
 		</div>
-		
+
 		<div id="metalloid", class="group">
-			<span><p class="groupsmall">Metalloids</p></span>
+			<span><p class="group-small-text">Metalloids</p></span>
 		</div>
-		
+
 		<div id="nonmetal", class="group">
-			<span><p class="groupsmall">Nonmetals</p></span>
+			<span><p class="group-small-text">Nonmetals</p></span>
 		</div>
-		
+
 		<div id="halogen", class="group">
-			<span><p class="groupsmall">Halogens</p></span>
+			<span><p class="group-small-text">Halogens</p></span>
 		</div>
-		
+
 		<div id="noble", class="group">
-			<span><p class="groupsmall">Noble Gases</p></span>
+			<span><p class="group-small-text">Noble Gases</p></span>
 		</div>
-		
+
 	</body>
+
 <script src="script.js"></script>
 </html>

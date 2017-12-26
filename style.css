@@ -135,12 +135,14 @@ a:link, a:visited, a:hover, a:active {
 	font-size: 100%;
 }
 
-.groupsmall {
+/* For element groups whose names fit in a single line */
+.group-small-text {
 	margin: 0;
 	line-height: 50px;
 }
 
-.grouplarge {
+/* For element groups whose names require two lines */
+.group-large-text {
 	margin: 0;
 	line-height: 25px;
 }
