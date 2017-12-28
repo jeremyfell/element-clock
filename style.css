@@ -114,7 +114,7 @@ a:link, a:visited, a:hover, a:active {
 	border-color: #ed1c24;
 }
 
-.boxtext {
+.box-text {
 	font-size: 150%;
 	margin: 0;
 	text-align:center;
@@ -147,13 +147,13 @@ a:link, a:visited, a:hover, a:active {
 	line-height: 25px;
 }
 
-#about {left: 0;}
+#about-button {left: 0;}
 
-#legend {left: 0; visibility: hidden;}
+#legend-button {left: 0; visibility: hidden;}
 
 #display {right: 0;}
 
-#aboutbox {
+#about-box {
 	background-color: #0066b3;
 	color: #ecf0f1;
 	border-style: solid;
@@ -173,7 +173,7 @@ a:link, a:visited, a:hover, a:active {
 	visibility: hidden;
 }
 
-#aboutboxtext {
+#about-box-text {
 	margin: 0;
 	line-height: 15px;
 	font-size: 100%;
@@ -229,29 +229,29 @@ a:link, a:visited, a:hover, a:active {
 
 #second-element {margin: -116px 0 0 150px;}
 
-#bname {margin: 0 0 0 115px;}
+#button-element-name {margin: 0 0 0 115px;}
 
-#bmass {margin: 0 0 0 230px;}
+#button-element-mass {margin: 0 0 0 230px;}
 
-#bgroup {margin: 0 0 0 345px;}
+#button-element-group {margin: 0 0 0 345px;}
 
-#alkali {text-align: center; border-color: #62a73b; background-color: #72bf44; margin: 0 0 0 460px;}
+#legend-alkali {text-align: center; border-color: #62a73b; background-color: #72bf44; margin: 0 0 0 460px;}
 
-#alkaline {text-align: center; border-color: #009353; background-color: #00a65d; margin: 0 0 0 575px;}
+#legend-alkaline {text-align: center; border-color: #009353; background-color: #00a65d; margin: 0 0 0 575px;}
 
-#rare {text-align: center; border-color: #512480; background-color: #5c2d91; margin: 0 0 0 690px;}
+#legend-rare {text-align: center; border-color: #512480; background-color: #5c2d91; margin: 0 0 0 690px;}
 
-#transition {text-align: center; border-color: #ccbe00; background-color: #e3d200; margin: 0 0 0 805px;}
+#legend-transition {text-align: center; border-color: #ccbe00; background-color: #e3d200; margin: 0 0 0 805px;}
 
-#other {text-align: center; border-color: #1c3687; background-color: #21409a; margin: 0 0 0 920px;}
+#legend-other {text-align: center; border-color: #1c3687; background-color: #21409a; margin: 0 0 0 920px;}
 
-#metalloid {text-align: center; border-color: #d99116; background-color: #faa61a; margin: 0 0 0 1035px;}
+#legend-metalloid {text-align: center; border-color: #d99116; background-color: #faa61a; margin: 0 0 0 1035px;}
 
-#nonmetal {text-align: center; border-color: #00599d; background-color: #0066b3; margin: 0 0 0 1150px;}
+#legend-nonmetal {text-align: center; border-color: #00599d; background-color: #0066b3; margin: 0 0 0 1150px;}
 
-#halogen {text-align: center; border-color: #ce181e; background-color: #ed1c24; margin: 0 0 0 1265px;}
+#legend-halogen {text-align: center; border-color: #ce181e; background-color: #ed1c24; margin: 0 0 0 1265px;}
 
-#noble {text-align: center; border-color: #8f187c; background-color: #a3238e; margin: 0 0 0 1380px;}
+#legend-noble {text-align: center; border-color: #8f187c; background-color: #a3238e; margin: 0 0 0 1380px;}
 
 
 table {
@@ -304,10 +304,10 @@ td {
 	cursor: pointer;
 }
 
-#hour {top: 0; margin: 66px 0 0 0; border-color: #00599d; background-color: #0066b3;}
+#legend-hour {top: 0; margin: 66px 0 0 0; border-color: #00599d; background-color: #0066b3;}
 
-#minute {top: 0; margin: 132px 0 0 0; border-color: #009353; background-color: #00a65d;}
+#legend-minute {top: 0; margin: 132px 0 0 0; border-color: #009353; background-color: #00a65d;}
 
-#second {top: 0; margin: 198px 0 0 0; border-color: #ccbe00; background-color: #e3d200;}
+#legend-second {top: 0; margin: 198px 0 0 0; border-color: #ccbe00; background-color: #e3d200;}
 
-#period {top: 0; margin: 264px 0 0 0; border-color: #ce181e; background-color: #ed1c24;}
+#legend-period {top: 0; margin: 264px 0 0 0; border-color: #ce181e; background-color: #ed1c24;}

@@ -8,39 +8,39 @@
 
 	<body>
 		<!-- Blue menu buttons -->
-		<div id="about", class="info", onclick="showabout = !showabout; if (showabout) {aboutbox.style.visibility = 'visible'} else {aboutbox.style.visibility = 'hidden'};">
-			<p class="boxtext">About</p>
+		<div id="about-button", class="info", onmouseenter="showElements([about_box])" onmouseleave="hideElements([about_box])">
+			<p class="box-text">About</p>
 		</div>
 
-		<div id="legend", class="info", onmouseenter="showElements([hour, minute, second, period])", onmouseleave="hideElements([hour, minute, second, period])">
-			<p class="boxtext">Legend</p>
+		<div id="legend-button", class="info", onmouseenter="showElements([legend_hour, legend_minute, legend_second, legend_period])", onmouseleave="hideElements([legend_hour, legend_minute, legend_second, legend_period])">
+			<p class="box-text">Legend</p>
 		</div>
 
-		<div id="aboutbox">
-			<p id="aboutboxtext">
+		<div id="about-box">
+			<p id="about-box-text">
 			A periodic clock that displays time with elements, with the atomic number indicating hours, minutes, and seconds.<br>
 			Click the Table button to switch to a periodic table visualization of the current time. Click on any element to visit its wiki page.<br>
 			</p>
 		</div>
 
 		<div id="display", class="info", onclick="changeDisplay(this.childNodes[1]);">
-			<p class="boxtext">Table</p>
+			<p class="box-text">Table</p>
 		</div>
 
-		<div id="hour", class="group">
-			<p class="boxtext">Hour</p>
+		<div id="legend-hour", class="group">
+			<p class="box-text">Hour</p>
 		</div>
 
-		<div id="minute", class="group">
-			<p class="boxtext">Minute</p>
+		<div id="legend-minute", class="group">
+			<p class="box-text">Minute</p>
 		</div>
 
-		<div id="second", class="group">
-			<p class="boxtext">Second</p>
+		<div id="legend-second", class="group">
+			<p class="box-text">Second</p>
 		</div>
 
-		<div id="period", class="group">
-			<p class="boxtext">AM/PM</p>
+		<div id="legend-period", class="group">
+			<p class="box-text">AM/PM</p>
 		</div>
 
 
@@ -80,56 +80,56 @@
 			</tbody>
 		</table>
 		<!-- Clock settings -->
-		<div id="bfull", class="setting off", onclick="display_24_hour = !display_24_hour; this.clasdisplay_element_name = 'setting ' + state[Number(display_24_hour)]; update(false)">
-			<p class="boxtext">24 Hour</p>
+		<div id="button-24-hour", class="setting off", onclick="display_24_hour = !display_24_hour; this.className = 'setting ' + state[Number(display_24_hour)]; update(false)">
+			<p class="box-text">24 Hour</p>
 		</div>
 
-		<div id="bname", class="setting off", onclick="display_element_name = !display_element_name; this.clasdisplay_element_name = 'setting ' + state[Number(display_element_name)]; update(false)">
-			<p class="boxtext">Name</p>
+		<div id="button-element-name", class="setting off", onclick="display_element_name = !display_element_name; this.className = 'setting ' + state[Number(display_element_name)]; update(false)">
+			<p class="box-text">Name</p>
 		</div>
 
-		<div id="bmass", class="setting off", onclick="display_element_mass = !display_element_mass; this.clasdisplay_element_name = 'setting ' + state[Number(display_element_mass)]; update(false)">
-			<p class="boxtext">Mass</p>
+		<div id="button-element-mass", class="setting off", onclick="display_element_mass = !display_element_mass; this.className = 'setting ' + state[Number(display_element_mass)]; update(false)">
+			<p class="box-text">Mass</p>
 		</div>
 
-		<div id="bgroup", class="setting on", onmouseenter="showElements([alkali,alkaline,rare,transition,other,metalloid,nonmetal,halogen,noble])", onmouseleave="hideElements([alkali,alkaline,rare,transition,other,metalloid,nonmetal,halogen,noble])", onclick="display_element_group = !display_element_group; this.clasdisplay_element_name = 'setting ' + state[Number(display_element_group)]; update(false)">
-			<p class="boxtext">Groups</p>
+		<div id="button-element-group", class="setting on", onmouseenter="showElements([legend_alkali, legend_alkaline, legend_rare, legend_transition, legend_other, legend_metalloid, legend_nonmetal, legend_halogen, legend_noble])", onmouseleave="hideElements([legend_alkali, legend_alkaline, legend_rare, legend_transition, legend_other, legend_metalloid, legend_nonmetal, legend_halogen, legend_noble])", onclick="display_element_group = !display_element_group; this.className = 'setting ' + state[Number(display_element_group)]; update(false)">
+			<p class="box-text">Groups</p>
 		</div>
 
 		<!-- Element groups -->
-		<div id="alkali", class="group">
+		<div id="legend-alkali", class="group">
 			<span><p class="group-small-text">Alkali Metals</p></span>
 		</div>
 
-		<div id="alkaline", class="group">
+		<div id="legend-alkaline", class="group">
 			<span><p class="group-large-text">Alkaline Earth Metals</p></span>
 		</div>
 
-		<div id="rare", class="group">
+		<div id="legend-rare", class="group">
 			<span><p class="group-large-text">Rare Earth Metals</p></span>
 		</div>
 
-		<div id="transition", class="group">
+		<div id="legend-transition", class="group">
 			<span><p class="group-large-text">Transition Metals</p></span>
 		</div>
 
-		<div id="other", class="group">
+		<div id="legend-other", class="group">
 			<span><p class="group-small-text">Other Metals</p></span>
 		</div>
 
-		<div id="metalloid", class="group">
+		<div id="legend-metalloid", class="group">
 			<span><p class="group-small-text">Metalloids</p></span>
 		</div>
 
-		<div id="nonmetal", class="group">
+		<div id="legend-nonmetal", class="group">
 			<span><p class="group-small-text">Nonmetals</p></span>
 		</div>
 
-		<div id="halogen", class="group">
+		<div id="legend-halogen", class="group">
 			<span><p class="group-small-text">Halogens</p></span>
 		</div>
 
-		<div id="noble", class="group">
+		<div id="legend-noble", class="group">
 			<span><p class="group-small-text">Noble Gases</p></span>
 		</div>
 
