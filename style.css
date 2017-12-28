@@ -179,7 +179,7 @@ a:link, a:visited, a:hover, a:active {
 	font-size: 100%;
 }
 
-#ep {
+#period-element {
 	position: absolute;
 	width: 100px;
 	height: 100px;
@@ -195,39 +195,39 @@ a:link, a:visited, a:hover, a:active {
 	cursor: pointer;
 }
 
-#sp {
+#period-element-symbol {
 	text-align: center;
 	line-height: 60px;
 	margin: auto;
 	font-size: 300%;
 }
 
-#ap {
+#period-atomic-number {
 	text-align:center;
 	line-height: 20px;
 	margin: auto;
 	font-size: 100%;
 }
 
-#np {
+#period-element-name {
 	text-align:center;
 	line-height: 0px;
 	margin: auto;
 	font-size: 75%;
 }
 
-#mp {
+#period-element-mass {
 	text-align:center;
 	line-height: 30px;
 	margin: auto;
 	font-size: 50%;
 }
 
-#eh {margin: -116px 0 0 -350px;}
+#hour-element {margin: -116px 0 0 -350px;}
 
-#em {margin: -116px 0 0 -100px;}
+#minute-element {margin: -116px 0 0 -100px;}
 
-#es {margin: -116px 0 0 150px;}
+#second-element {margin: -116px 0 0 150px;}
 
 #bname {margin: 0 0 0 115px;}
 

@@ -46,251 +46,53 @@
 
 		<!-- Main digital clock -->
 		<div id="clock">
-			<div id="eh", class="periodic", onclick="window.open(wiki + ename[h])">
-				<span><p id="ah", class="atomic"></p></span>
-				<span><p id="sh", class="symbol"></p></span>
-				<span><p id="nh", class="name"></p></span>
-				<span><p id="mh", class="mass"></p></span>
+			<div id="hour-element", class="periodic", onclick="openWikiPage(current_hour)">
+				<span><p id="hour-atomic-number", class="atomic"></p></span>
+				<span><p id="hour-element-symbol", class="symbol"></p></span>
+				<span><p id="hour-element-name", class="name"></p></span>
+				<span><p id="hour-element-mass", class="mass"></p></span>
 			</div>
 
-			<div id="em", class="periodic", onclick="window.open(wiki + ename[m])">
-				<span><p id="am", class="atomic"></p></span>
-				<span><p id="sm", class="symbol"></p></span>
-				<span><p id="nm", class="name"></p></span>
-				<span><p id="mm", class="mass"></p></span>
+			<div id="minute-element", class="periodic", onclick="openWikiPage(current_minute)">
+				<span><p id="minute-atomic-number", class="atomic"></p></span>
+				<span><p id="minute-element-symbol", class="symbol"></p></span>
+				<span><p id="minute-element-name", class="name"></p></span>
+				<span><p id="minute-element-mass", class="mass"></p></span>
 			</div>
 
-			<div id="es", class="periodic", onclick="window.open(wiki + ename[s])">
-				<span><p id="as", class="atomic"></p></span>
-				<span><p id="ss", class="symbol"></p></span>
-				<span><p id="ns", class="name"></p></span>
-				<span><p id="ms", class="mass"></p></span>
+			<div id="second-element", class="periodic", onclick="openWikiPage(current_second)">
+				<span><p id="second-atomic-number", class="atomic"></p></span>
+				<span><p id="second-element-symbol", class="symbol"></p></span>
+				<span><p id="second-element-name", class="name"></p></span>
+				<span><p id="second-element-mass", class="mass"></p></span>
 			</div>
 
-			<div id="ep", onclick="window.open(wiki + ename[95 - 34 * Number(post)])">
-				<span><p id="ap"></p></span>
-				<span><p id="sp"></p></span>
-				<span><p id="np"></p></span>
-				<span><p id="mp"></p></span>
+			<div id="period-element", onclick="openWikiPage(95 - 34 * Number(post))">
+				<span><p id="period-atomic-number"></p></span>
+				<span><p id="period-element-symbol"></p></span>
+				<span><p id="period-element-name"></p></span>
+				<span><p id="period-element-mass"></p></span>
 			</div>
 		</div>
 		<!-- Periodic table time display -->
 		<table id="table">
-			<tr>
-				<td><div id="e1", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e2", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-			</tr>
-			<tr>
-				<td><div id="e3", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e4", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e5", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e6", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e7", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e8", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e9", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e10", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-			</tr>
-			<tr>
-				<td><div id="e11", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e12", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e13", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e14", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e15", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e16", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e17", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e18", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-			</tr>
-			<tr>
-				<td><div id="e19", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e20", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e21", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e22", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e23", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e24", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e25", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e26", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e27", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e28", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e29", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e30", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e31", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e32", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e33", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e34", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e35", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e36", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-			</tr>
-			<tr>
-				<td><div id="e37", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e38", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e39", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e40", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e41", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e42", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e43", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e44", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e45", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e46", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e47", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e48", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e49", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e50", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e51", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e52", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e53", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e54", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-			</tr>
-			<tr>
-				<td><div id="e55", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e56", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e72", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e73", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e74", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e75", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e76", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e77", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e78", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e79", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e80", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e81", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e82", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e83", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e84", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e85", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e86", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-			</tr>
-			<tr>
-				<td><div id="e87", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e88", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e104", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e105", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e106", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e107", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e108", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e109", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e110", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e111", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e112", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e113", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e114", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e115", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e116", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e117", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e118", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-			</tr>
-			<tr>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-			</tr>
-			<tr>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e57", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e58", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e59", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e60", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e61", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e62", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e63", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e64", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e65", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e66", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e67", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e68", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e69", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e70", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e71", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-			</tr>
-			<tr>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e89", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e90", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e91", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e92", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e93", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e94", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e95", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e96", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e97", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e98", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e99", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e100", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e101", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e102", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div id="e103", class="telement show"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-				<td><div class="telement hide"><p class="tatomic"></p><p class="tsymbol"></p></div></td>
-			</tr>
+			<tbody id="table-body">
+			</tbody>
 		</table>
 		<!-- Clock settings -->
-		<div id="bfull", class="setting off", onclick="sfull = !sfull; this.className = 'setting ' + state[Number(sfull)]; update(false)">
+		<div id="bfull", class="setting off", onclick="display_24_hour = !display_24_hour; this.clasdisplay_element_name = 'setting ' + state[Number(display_24_hour)]; update(false)">
 			<p class="boxtext">24 Hour</p>
 		</div>
 
-		<div id="bname", class="setting off", onclick="sname = !sname; this.className = 'setting ' + state[Number(sname)]; update(false)">
+		<div id="bname", class="setting off", onclick="display_element_name = !display_element_name; this.clasdisplay_element_name = 'setting ' + state[Number(display_element_name)]; update(false)">
 			<p class="boxtext">Name</p>
 		</div>
 
-		<div id="bmass", class="setting off", onclick="smass = !smass; this.className = 'setting ' + state[Number(smass)]; update(false)">
+		<div id="bmass", class="setting off", onclick="display_element_mass = !display_element_mass; this.clasdisplay_element_name = 'setting ' + state[Number(display_element_mass)]; update(false)">
 			<p class="boxtext">Mass</p>
 		</div>
 
-		<div id="bgroup", class="setting on", onmouseenter="showElements([alkali,alkaline,rare,transition,other,metalloid,nonmetal,halogen,noble])", onmouseleave="hideElements([alkali,alkaline,rare,transition,other,metalloid,nonmetal,halogen,noble])", onclick="sgroup = !sgroup; this.className = 'setting ' + state[Number(sgroup)]; update(false)">
+		<div id="bgroup", class="setting on", onmouseenter="showElements([alkali,alkaline,rare,transition,other,metalloid,nonmetal,halogen,noble])", onmouseleave="hideElements([alkali,alkaline,rare,transition,other,metalloid,nonmetal,halogen,noble])", onclick="display_element_group = !display_element_group; this.clasdisplay_element_name = 'setting ' + state[Number(display_element_group)]; update(false)">
 			<p class="boxtext">Groups</p>
 		</div>
 

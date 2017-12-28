@@ -138,35 +138,37 @@ var boxcolor = {
 var state = ["off", "on"];
 
 //Element
-var eh = document.getElementById("eh");
-var em = document.getElementById("em");
-var es = document.getElementById("es");
-var ep = document.getElementById("ep");
+var eh = document.getElementById("hour-element");
+var em = document.getElementById("minute-element");
+var es = document.getElementById("second-element");
+var ep = document.getElementById("period-element");
 //Element symbol
-var sh = document.getElementById("sh");
-var sm = document.getElementById("sm");
-var ss = document.getElementById("ss");
-var sp = document.getElementById("sp");
+var sh = document.getElementById("hour-element-symbol");
+var sm = document.getElementById("minute-element-symbol");
+var ss = document.getElementById("second-element-symbol");
+var sp = document.getElementById("period-element-symbol");
 //Element atomic number
-var ah = document.getElementById("ah");
-var am = document.getElementById("am");
-var as = document.getElementById("as");
-var ap = document.getElementById("ap");
+var ah = document.getElementById("hour-atomic-number");
+var am = document.getElementById("minute-atomic-number");
+var as = document.getElementById("second-atomic-number");
+var ap = document.getElementById("period-atomic-number");
 //Element name
-var nh = document.getElementById("nh");
-var nm = document.getElementById("nm");
-var ns = document.getElementById("ns");
-var np = document.getElementById("np");
+var nh = document.getElementById("hour-element-name");
+var nm = document.getElementById("minute-element-name");
+var ns = document.getElementById("second-element-name");
+var np = document.getElementById("period-element-name");
 //Element atomic mass
-var mh = document.getElementById("mh");
-var mm = document.getElementById("mm");
-var ms = document.getElementById("ms");
-var mp = document.getElementById("mp");
+var mh = document.getElementById("hour-element-mass");
+var mm = document.getElementById("minute-element-mass");
+var ms = document.getElementById("second-element-mass");
+var mp = document.getElementById("period-element-mass");
+
 //Setting values
-var sfull = false;
-var sname = false;
-var smass = false;
-var sgroup = true;
+var display_24_hour = false;
+var display_element_name = false;
+var display_element_mass = false;
+var display_element_group = true;
+
 //Setting buttons
 var bfull = document.getElementById("bfull");
 var bname = document.getElementById("bname");
@@ -187,15 +189,17 @@ var metalloid = document.getElementById("metalloid");
 var nonmetal = document.getElementById("nonmetal");
 var halogen = document.getElementById("halogen");
 var noble = document.getElementById("noble");
+
 //Legend times
 var hour = document.getElementById("hour");
 var minute = document.getElementById("minute");
 var second = document.getElementById("second");
 var period = document.getElementById("period");
+
 //Time
-var h;
-var m;
-var s;
+var current_hour;
+var current_minute;
+var current_second;
 var post;
 //Displays
 var clock = document.getElementById("clock");
@@ -203,27 +207,30 @@ var table = document.getElementById("table");
 
 var table_elements = [null];//Table elements
 var display = true;//Current display
-var basic = 3;//Default clock color
+var default_color = "transition metals";//Default clock color
 
 function update(repeat) {
 	var csymbol;
 	var catomic;
-    var d = new Date()
-    h = d.getHours();
-    m = d.getMinutes();
-    s = d.getSeconds();
-	if (display) {
-		if (!sfull) {
+  var current_date = new Date()
+
+  current_hour = current_date.getHours();
+  current_minute = current_date.getMinutes();
+  current_second = current_date.getSeconds();
+
+  if (display) {
+		if (!display_24_hour) {
 			ep.style.visibility = "visible";
-			if (h > 12) {
-				h -= 12;
+			if (current_hour > 12) {
+				current_hour -= 12;
 				post = true;
 			} else {
 				post = false;
-				if (h === 0) {
-					h = 12;
+				if (current_hour === 0) {
+					current_hour = 12;
 				}
 			}
+
 			ap.innerHTML = 95 - 34 * Number(post);
 			sp.innerHTML = elements[95 - 34 * Number(post)]["symbol"];
 			np.innerHTML = elements[95 - 34 * Number(post)]["name"];
@@ -232,37 +239,37 @@ function update(repeat) {
 		} else {
 			ep.style.visibility = "hidden";
 		}
-		sh.innerHTML = elements[h]["symbol"];
-		sm.innerHTML = elements[m]["symbol"];
-		ss.innerHTML = elements[s]["symbol"];
-		ah.innerHTML = h;
-		am.innerHTML = m;
-		as.innerHTML = s;
+		sh.innerHTML = elements[current_hour]["symbol"];
+		sm.innerHTML = elements[current_minute]["symbol"];
+		ss.innerHTML = elements[current_second]["symbol"];
+		ah.innerHTML = current_hour;
+		am.innerHTML = current_minute;
+		as.innerHTML = current_second;
 
-		if (sname) {
-			nh.innerHTML = elements[h]["name"];
-			nm.innerHTML = elements[m]["name"];
-			ns.innerHTML = elements[s]["name"];
+		if (display_element_name) {
+			nh.innerHTML = elements[current_hour]["name"];
+			nm.innerHTML = elements[current_minute]["name"];
+			ns.innerHTML = elements[current_second]["name"];
 			showElements([nh, nm, ns]);
-			sfull ? np.style.visibility = "hidden" : np.style.visibility = "visible";
+			display_24_hour ? np.style.visibility = "hidden" : np.style.visibility = "visible";
 		} else {
 			hideElements([nh, nm, ns, np]);
 		}
 
-		if (smass) {
-			mh.innerHTML = elements[h]["mass"];
-			mm.innerHTML = elements[m]["mass"];
-			ms.innerHTML = elements[s]["mass"];
+		if (display_element_mass) {
+			mh.innerHTML = elements[current_hour]["mass"];
+			mm.innerHTML = elements[current_minute]["mass"];
+			ms.innerHTML = elements[current_second]["mass"];
 			showElements([mh, mm, ms])
-			sfull ? mp.style.visibility = "hidden" : mp.style.visibility = "visible";
+			display_24_hour ? mp.style.visibility = "hidden" : mp.style.visibility = "visible";
 		} else {
 			hideElements([mh, mm, ms, mp]);
 		}
 
-		if (sgroup) {
-			groupUpdate(elements[h]["group"], eh);
-			groupUpdate(elements[m]["group"], em);
-			groupUpdate(elements[s]["group"], es);
+		if (display_element_group) {
+			groupUpdate(elements[current_hour]["group"], eh);
+			groupUpdate(elements[current_minute]["group"], em);
+			groupUpdate(elements[current_second]["group"], es);
 			groupUpdate("rare earth metals", ep);
 		} else {
 			groupDefault(eh);
@@ -285,46 +292,46 @@ function update(repeat) {
 
 		}
 
-		if (!sfull) {
-			if (h > 12) {
-				h -= 12;
+		if (!display_24_hour) {
+			if (current_hour > 12) {
+				current_hour -= 12;
 				post = true;
 				table_elements[61].style.borderColor = "#ce181e";
 				table_elements[61].style.backgroundColor = "#ed1c24";
 			} else {
 				post = false;
-				if (h === 0) {
-					h = 12;
+				if (current_hour === 0) {
+					current_hour = 12;
 				}
 				table_elements[95].style.borderColor = "#ce181e";
 				table_elements[95].style.backgroundColor = "#ed1c24";
 			}
 		}
 
-		if (h > 0) {
-			table_elements[h].style.borderColor = "#00599d";
-			table_elements[h].style.backgroundColor = "#0066b3";
+		if (current_hour > 0) {
+			table_elements[current_hour].style.borderColor = "#00599d";
+			table_elements[current_hour].style.backgroundColor = "#0066b3";
 		}
 
-		if (m > 0) {
-			if (m !== h) {
-				table_elements[m].style.borderColor = "#009353";
-				table_elements[m].style.backgroundColor = "#00a65d";
+		if (current_minute > 0) {
+			if (current_minute !== current_hour) {
+				table_elements[current_minute].style.borderColor = "#009353";
+				table_elements[current_minute].style.backgroundColor = "#00a65d";
 			} else {
-				csymbol = table_elements[m].childNodes[1];
+				csymbol = table_elements[current_minute].childNodes[1];
 				csymbol.style.color = "#009353";
 			}
 		}
 
-		if (s > 0) {
-			if (s !== h && s !== m) {
-				table_elements[s].style.borderColor = "#ccbe00";
-				table_elements[s].style.backgroundColor = "#e3d200";
-			} else if (s === h && s === m) {
-				catomic = table_elements[s].childNodes[0];
+		if (current_second > 0) {
+			if (current_second !== current_hour && current_second !== current_minute) {
+				table_elements[current_second].style.borderColor = "#ccbe00";
+				table_elements[current_second].style.backgroundColor = "#e3d200";
+			} else if (current_second === current_hour && current_second === current_minute) {
+				catomic = table_elements[current_second].childNodes[0];
 				catomic.style.color = "#ccbe00";
 			} else {
-				csymbol = table_elements[s].childNodes[1];
+				csymbol = table_elements[current_second].childNodes[1];
 				csymbol.style.color = "#ccbe00";
 			}
 		}
@@ -338,8 +345,8 @@ function groupUpdate(g, box) {
 }
 
 function groupDefault(box) {
-	box.style.backgroundColor = boxcolor[basic][1];
-	box.style.borderColor = boxcolor[basic][0];
+	box.style.backgroundColor = boxcolor[default_color][1];
+	box.style.borderColor = boxcolor[default_color][0];
 }
 
 function showElements(change) {
@@ -373,13 +380,73 @@ function changeDisplay(cdisplay) {
 	update(false);
 }
 
-for (var n = 1; n <= 118; n++) {
-	var celement = document.getElementById("e" + n);
-	celement.childNodes[0].innerHTML = n;
-	celement.childNodes[1].innerHTML = elements[n]["symbol"];
-	celement.onclick = function() {window.open(wiki + elements[Number(this.childNodes[0].innerHTML)]["name"])};
-	celement.title = elements[n]["name"];
-	elements.push(document.getElementById("e" + n));
+// Opens the wikipedia page for the selected element
+function openWikiPage(selected_element) {
+  var name = (selected_element === 0) ? "Periodic_table" : elements[selected_element]['name'];
+  window.open(wiki + name);
 }
+
+function generatePeriodicTable() {
+  var table_body = document.getElementById("table-body");
+
+  // Encoding to easily store which squares of each row should be visible or invisible
+  // Each row encoded as [A B C D]
+  // Each row consists of, from left to right, A visible squares, followed by B invisible squares, then C visible, then D invisible
+  rows = [
+    [1, 16, 1, 0],
+    [2, 10, 6, 0],
+    [2, 10, 6, 0],
+    [18, 0, 0, 0],
+    [18, 0, 0, 0],
+    [2, 1, 15, 0],
+    [2, 1, 15, 0],
+    [0, 0, 0, 18],
+    [0, 2, 15, 1],
+    [0, 2, 15, 1],
+  ]
+
+  current_element = 1;
+
+  for (var current_row = 0; current_row < rows.length; current_row++) {
+    var table_row = document.createElement("tr");
+
+    for (var current_column = 0; current_column < 18; current_column++) {
+
+      var table_data = document.createElement("td");
+      var table_data_container = document.createElement("div");
+      var table_data_atomic = document.createElement("p");
+      var table_data_symbol = document.createElement("p");
+
+      table_data_container.classList.add("telement");
+      table_data_atomic.classList.add("tatomic");
+      table_data_symbol.classList.add("tsymbol");
+
+      if (current_column < rows[current_row][0] || (current_column >= rows[current_row][0] + rows[current_row][1] && current_column < 18 - rows[current_row][3])) {
+        table_data_container.classList.add("show");
+        table_data_container.id = "e" + String(current_element);
+        table_data_atomic.innerHTML = String(current_element);
+        table_data_symbol.innerHTML = elements[current_element]["symbol"];
+        table_data_container.onclick = function() {openWikiPage(this.childNodes[0].innerHTML)};
+        table_data_container.title = elements[current_element]["name"];
+        table_elements.push(table_data_container);
+
+        current_element++;
+      } else {
+        table_data_container.classList.add("hide");
+      }
+
+      table_data_container.appendChild(table_data_atomic);
+      table_data_container.appendChild(table_data_symbol);
+      table_data.appendChild(table_data_container);
+      table_row.appendChild(table_data);
+    }
+
+    table_body.appendChild(table_row);
+
+  }
+
+}
+
+generatePeriodicTable();
 
 update(true);
