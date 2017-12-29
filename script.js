@@ -222,7 +222,7 @@ var table_elements = [null];
 var display_clock = true;
 
 
-
+// Updates the clock display with the current time
 function updateClockDisplay() {
 
   if (!display_24_hour) {
@@ -296,9 +296,8 @@ function updateClockDisplay() {
 
 }
 
+// Updates the time table display with the current time
 function updateTimeTableDisplay() {
-  var current_element_symbol;
-  var current_atomic_number;
 
   // Set all table elements colors to the default colors
   for (var e = 1; e <= 95; e++) {
@@ -348,8 +347,7 @@ function updateTimeTableDisplay() {
       table_elements[current_minute].style.borderColor = "#009353";
       table_elements[current_minute].style.backgroundColor = "#00a65d";
     } else {
-      current_element_symbol = table_elements[current_minute].childNodes[1];
-      current_element_symbol.style.color = "#009353";
+      table_elements[current_minute].childNodes[1].style.color = "#009353";
     }
   }
 
@@ -358,11 +356,9 @@ function updateTimeTableDisplay() {
       table_elements[current_second].style.borderColor = "#ccbe00";
       table_elements[current_second].style.backgroundColor = "#e3d200";
     } else if (current_second === current_hour && current_second === current_minute) {
-      current_atomic_number = table_elements[current_second].childNodes[0];
-      current_atomic_number.style.color = "#ccbe00";
+      table_elements[current_second].childNodes[0].style.color = "#ccbe00";
     } else {
-      current_element_symbol = table_elements[current_second].childNodes[1];
-      current_element_symbol.style.color = "#ccbe00";
+      table_elements[current_second].childNodes[1].style.color = "#ccbe00";
     }
   }
 }

@@ -8,6 +8,8 @@
 
 	<body>
 
+		<div id="display-container">
+
 		<!-- Blue menu buttons -->
 		<div id="about-button", class="info", onmouseenter="showElements([about_box])" onmouseleave="hideElements([about_box])">
 			<p class="box-text">About</p>
@@ -77,24 +79,22 @@
 
 		<!-- Periodic table time display -->
 		<table id="time-table">
-			<tbody id="time-table-body">
-			</tbody>
+			<tbody id="time-table-body"></tbody>
 		</table>
-
 		<!-- Clock settings -->
-		<div id="button-24-hour", class="setting off", onclick="toggle24Hour()">
+		<div id="button-24-hour", class="setting off", onclick="toggle24Hour(this)">
 			<p class="box-text">24 Hour</p>
 		</div>
 
-		<div id="button-element-name", class="setting off", onclick="toggleElementName()">
+		<div id="button-element-name", class="setting off", onclick="toggleElementName(this)">
 			<p class="box-text">Name</p>
 		</div>
 
-		<div id="button-element-mass", class="setting off", onclick="toggleElementMass()">
+		<div id="button-element-mass", class="setting off", onclick="toggleElementMass(this)">
 			<p class="box-text">Mass</p>
 		</div>
 
-		<div id="button-element-group", class="setting on", onmouseenter="showElements(legend_groups)", onmouseleave="hideElements(legend_groups)", onclick="toggleElementGroup()">
+		<div id="button-element-group", class="setting on", onmouseenter="showElements(legend_groups)", onmouseleave="hideElements(legend_groups)", onclick="toggleElementGroup(this)">
 			<p class="box-text">Groups</p>
 		</div>
 
@@ -133,6 +133,8 @@
 
 		<div id="legend-noble", class="group">
 			<span><p class="group-small-text">Noble Gases</p></span>
+		</div>
+
 		</div>
 
 	</body>
