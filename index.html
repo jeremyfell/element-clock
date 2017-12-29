@@ -7,6 +7,7 @@
 	</head>
 
 	<body>
+
 		<!-- Blue menu buttons -->
 		<div id="about-button", class="info", onmouseenter="showElements([about_box])" onmouseleave="hideElements([about_box])">
 			<p class="box-text">About</p>
@@ -23,7 +24,7 @@
 			</p>
 		</div>
 
-		<div id="display", class="info", onclick="changeDisplay(this.childNodes[1]);">
+		<div id="display-button", class="info", onclick="switchDisplay(this.childNodes[1]);">
 			<p class="box-text">Table</p>
 		</div>
 
@@ -42,7 +43,6 @@
 		<div id="legend-period", class="group">
 			<p class="box-text">AM/PM</p>
 		</div>
-
 
 		<!-- Main digital clock -->
 		<div id="clock">
@@ -67,32 +67,34 @@
 				<span><p id="second-element-mass", class="mass"></p></span>
 			</div>
 
-			<div id="period-element", onclick="openWikiPage(95 - 34 * Number(post))">
+			<div id="period-element", onclick="openWikiPage(95 - 34 * Number(post_meridiem))">
 				<span><p id="period-atomic-number"></p></span>
 				<span><p id="period-element-symbol"></p></span>
 				<span><p id="period-element-name"></p></span>
 				<span><p id="period-element-mass"></p></span>
 			</div>
 		</div>
+
 		<!-- Periodic table time display -->
-		<table id="table">
-			<tbody id="table-body">
+		<table id="time-table">
+			<tbody id="time-table-body">
 			</tbody>
 		</table>
+
 		<!-- Clock settings -->
-		<div id="button-24-hour", class="setting off", onclick="display_24_hour = !display_24_hour; this.className = 'setting ' + state[Number(display_24_hour)]; update(false)">
+		<div id="button-24-hour", class="setting off", onclick="toggle24Hour()">
 			<p class="box-text">24 Hour</p>
 		</div>
 
-		<div id="button-element-name", class="setting off", onclick="display_element_name = !display_element_name; this.className = 'setting ' + state[Number(display_element_name)]; update(false)">
+		<div id="button-element-name", class="setting off", onclick="toggleElementName()">
 			<p class="box-text">Name</p>
 		</div>
 
-		<div id="button-element-mass", class="setting off", onclick="display_element_mass = !display_element_mass; this.className = 'setting ' + state[Number(display_element_mass)]; update(false)">
+		<div id="button-element-mass", class="setting off", onclick="toggleElementMass()">
 			<p class="box-text">Mass</p>
 		</div>
 
-		<div id="button-element-group", class="setting on", onmouseenter="showElements([legend_alkali, legend_alkaline, legend_rare, legend_transition, legend_other, legend_metalloid, legend_nonmetal, legend_halogen, legend_noble])", onmouseleave="hideElements([legend_alkali, legend_alkaline, legend_rare, legend_transition, legend_other, legend_metalloid, legend_nonmetal, legend_halogen, legend_noble])", onclick="display_element_group = !display_element_group; this.className = 'setting ' + state[Number(display_element_group)]; update(false)">
+		<div id="button-element-group", class="setting on", onmouseenter="showElements(legend_groups)", onmouseleave="hideElements(legend_groups)", onclick="toggleElementGroup()">
 			<p class="box-text">Groups</p>
 		</div>
 

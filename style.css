@@ -151,7 +151,7 @@ a:link, a:visited, a:hover, a:active {
 
 #legend-button {left: 0; visibility: hidden;}
 
-#display {right: 0;}
+#display-button {right: 0;}
 
 #about-box {
 	background-color: #0066b3;
@@ -271,7 +271,7 @@ td {
 	height: 50px;
 }
 
-.telement {
+.table-element {
 
 	width: 50px;
 	height: 50px;
@@ -284,13 +284,13 @@ td {
 	padding: 0;
 }
 
-.tatomic {
+.table-atomic-number {
 	text-align: center;
 	margin: auto;
 	font-size: 75%;
 }
 
-.tsymbol {
+.table-element-symbol {
 	text-align: center;
 	margin: auto;
 	font-size: 150%;

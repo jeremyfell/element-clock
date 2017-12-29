@@ -122,6 +122,7 @@ var elements = [
   {symbol: "Og", 	name: "Oganesson",      mass: "?",          group: "unknown"}
 ]
 
+// First color is a darker box border color, second color is a lighter box background color
 var box_colors = {
 	"alkali metals":         ["#62a73b", "#72bf44"],
 	"alkaline earth metals": ["#009353", "#00a65d"],
@@ -135,57 +136,59 @@ var box_colors = {
 	"unknown":               ["#7f8c8d", "#bdc3c7"]
 };
 
+// Default clock element box color
+var default_color = "transition metals";
+
 var state = ["off", "on"];
 
-// Element
+// Clock display elements
 var hour_element = document.getElementById("hour-element");
 var minute_element = document.getElementById("minute-element");
 var second_element = document.getElementById("second-element");
 var period_element = document.getElementById("period-element");
 
-// Element symbol
+// Clock display element symbols
 var hour_element_symbol = document.getElementById("hour-element-symbol");
 var minute_element_symbol = document.getElementById("minute-element-symbol");
 var second_element_symbol = document.getElementById("second-element-symbol");
 var period_element_symbol = document.getElementById("period-element-symbol");
 
-// Element atomic number
+// Clock display element atomic numbers
 var hour_atomic_number = document.getElementById("hour-atomic-number");
 var minute_atomic_number = document.getElementById("minute-atomic-number");
 var second_atomic_number = document.getElementById("second-atomic-number");
 var period_atomic_number = document.getElementById("period-atomic-number");
 
-// Element name
+// Clock display element names
 var hour_element_name = document.getElementById("hour-element-name");
 var minute_element_name = document.getElementById("minute-element-name");
 var second_element_name = document.getElementById("second-element-name");
 var period_element_name = document.getElementById("period-element-name");
 
-// Element atomic mass
+// Clock display element masses
 var hour_element_mass = document.getElementById("hour-element-mass");
 var minute_element_mass = document.getElementById("minute-element-mass");
 var second_element_mass = document.getElementById("second-element-mass");
 var period_element_mass = document.getElementById("period-element-mass");
 
-// Setting values
+// Display settings
 var display_24_hour = false;
 var display_element_name = false;
 var display_element_mass = false;
 var display_element_group = true;
 
-// Setting buttons
+// Buttons to toggle display settings
 var button_24_hour = document.getElementById("button-24-hour");
 var button_element_name = document.getElementById("button-element-name");
 var button_element_mass = document.getElementById("button-element-mass");
 var button_element_group = document.getElementById("button-element-group");
 
-//Info buttons
+// Display information
 var about_button = document.getElementById("about-button");
 var legend_button = document.getElementById("legend-button");
 var about_box = document.getElementById("about-box");
-var showabout = false;
 
-//Element groups
+// Legend boxes for element groups
 var legend_alkali = document.getElementById("legend-alkali");
 var legend_alkaline = document.getElementById("legend-alkaline");
 var legend_rare = document.getElementById("legend-rare");
@@ -195,173 +198,211 @@ var legend_metalloid = document.getElementById("legend-metalloid");
 var legend_nonmetal = document.getElementById("legend-nonmetal");
 var legend_halogen = document.getElementById("legend-halogen");
 var legend_noble = document.getElementById("legend-noble");
+var legend_groups = [legend_alkali, legend_alkaline, legend_rare, legend_transition, legend_other, legend_metalloid, legend_nonmetal, legend_halogen, legend_noble];
 
-//Legend times
+//Legend boxes for time units
 var legend_hour = document.getElementById("legend-hour");
 var legend_minute = document.getElementById("legend-minute");
 var legend_second = document.getElementById("legend-second");
 var legend_period = document.getElementById("legend-period");
 
-//Time
+// Current time
 var current_hour;
 var current_minute;
 var current_second;
 var post_meridiem;
 
-//Displays
+// Displays
 var clock = document.getElementById("clock");
-var table = document.getElementById("table");
+var time_table = document.getElementById("time-table");
 
-var table_elements = [null];//Table elements
-var display = true;//Current display
-var default_color = "transition metals";//Default clock color
+// Array of all element squares in the time table display
+var table_elements = [null];
+// Display clock if true, display time table if false
+var display_clock = true;
 
-function update(repeat) {
-	var csymbol;
-	var catomic;
+
+
+function updateClockDisplay() {
+
+  if (!display_24_hour) {
+    period_element.style.visibility = "visible";
+
+    if (current_hour > 12) {
+      current_hour -= 12;
+      post_meridiem = true;
+    } else {
+      post_meridiem = false;
+      if (current_hour === 0) {
+        current_hour = 12;
+      }
+    }
+
+    var current_period_element = 95 - 34 * Number(post_meridiem);
+    period_atomic_number.innerHTML = current_period_element;
+    period_element_symbol.innerHTML = elements[current_period_element]["symbol"];
+    period_element_name.innerHTML = elements[current_period_element]["name"];
+    period_element_mass.innerHTML = elements[current_period_element]["mass"];
+  } else {
+    period_element.style.visibility = "hidden";
+  }
+
+  // Display the corresponding element symbols and atomic nummbers for the current time
+  hour_element_symbol.innerHTML = elements[current_hour]["symbol"];
+  minute_element_symbol.innerHTML = elements[current_minute]["symbol"];
+  second_element_symbol.innerHTML = elements[current_second]["symbol"];
+  hour_atomic_number.innerHTML = current_hour;
+  minute_atomic_number.innerHTML = current_minute;
+  second_atomic_number.innerHTML = current_second;
+
+  // Display the corresponding element names for the current time
+  if (display_element_name) {
+    hour_element_name.innerHTML = elements[current_hour]["name"];
+    minute_element_name.innerHTML = elements[current_minute]["name"];
+    second_element_name.innerHTML = elements[current_second]["name"];
+    showElements([hour_element_name, minute_element_name, second_element_name]);
+    period_element_name.style.visibility = (display_24_hour ? "hidden" : "visible");
+  } else {
+    hideElements([hour_element_name, minute_element_name, second_element_name, period_element_name]);
+  }
+
+  // Display the corresponding element masses for the current time
+  if (display_element_mass) {
+    hour_element_mass.innerHTML = elements[current_hour]["mass"];
+    minute_element_mass.innerHTML = elements[current_minute]["mass"];
+    second_element_mass.innerHTML = elements[current_second]["mass"];
+    showElements([hour_element_mass, minute_element_mass, second_element_mass]);
+    period_element_mass.style.visibility = (display_24_hour ? "hidden" : "visible");
+  } else {
+    hideElements([hour_element_mass, minute_element_mass, second_element_mass, period_element_mass]);
+  }
+
+  // Display the corresponding element groups for the current time
+  if (display_element_group) {
+
+    updateGroup(elements[current_hour]["group"], hour_element);
+    updateGroup(elements[current_minute]["group"], minute_element);
+    updateGroup(elements[current_second]["group"], second_element);
+    updateGroup("rare earth metals", period_element);
+
+  } else {
+
+    defaultGroup(hour_element);
+    defaultGroup(minute_element);
+    defaultGroup(second_element);
+    defaultGroup(period_element);
+
+  }
+
+}
+
+function updateTimeTableDisplay() {
+  var current_element_symbol;
+  var current_atomic_number;
+
+  // Set all table elements colors to the default colors
+  for (var e = 1; e <= 95; e++) {
+    var current_table_element = table_elements[e];
+    current_table_element.style.borderColor = "#304457";
+    current_table_element.style.backgroundColor = "#34495e";
+    current_table_element.childNodes[0].style.color = "#2c3e50";
+    current_table_element.childNodes[1].style.color = "#2c3e50";
+    if (e === 59) {
+      e = 60;
+    } else if (e === 61) {
+      e = 94;
+    }
+
+  }
+
+  if (!display_24_hour) {
+
+    if (current_hour > 12) {
+
+      current_hour -= 12;
+      post_meridiem = true;
+      table_elements[61].style.borderColor = "#ce181e";
+      table_elements[61].style.backgroundColor = "#ed1c24";
+
+    } else {
+
+      post_meridiem = false;
+
+      if (current_hour === 0) {
+        current_hour = 12;
+      }
+
+      table_elements[95].style.borderColor = "#ce181e";
+      table_elements[95].style.backgroundColor = "#ed1c24";
+
+    }
+  }
+
+  if (current_hour > 0) {
+    table_elements[current_hour].style.borderColor = "#00599d";
+    table_elements[current_hour].style.backgroundColor = "#0066b3";
+  }
+
+  if (current_minute > 0) {
+    if (current_minute !== current_hour) {
+      table_elements[current_minute].style.borderColor = "#009353";
+      table_elements[current_minute].style.backgroundColor = "#00a65d";
+    } else {
+      current_element_symbol = table_elements[current_minute].childNodes[1];
+      current_element_symbol.style.color = "#009353";
+    }
+  }
+
+  if (current_second > 0) {
+    if (current_second !== current_hour && current_second !== current_minute) {
+      table_elements[current_second].style.borderColor = "#ccbe00";
+      table_elements[current_second].style.backgroundColor = "#e3d200";
+    } else if (current_second === current_hour && current_second === current_minute) {
+      current_atomic_number = table_elements[current_second].childNodes[0];
+      current_atomic_number.style.color = "#ccbe00";
+    } else {
+      current_element_symbol = table_elements[current_second].childNodes[1];
+      current_element_symbol.style.color = "#ccbe00";
+    }
+  }
+}
+
+
+// Updates the time displayed by the clock and time table displays
+function updateTime(repeat) {
   var current_date = new Date()
 
   current_hour = current_date.getHours();
   current_minute = current_date.getMinutes();
   current_second = current_date.getSeconds();
 
-  if (display) {
+  if (display_clock) {
 
-		if (!display_24_hour) {
-			period_element.style.visibility = "visible";
-			if (current_hour > 12) {
-				current_hour -= 12;
-				post_meridiem = true;
-			} else {
-				post_meridiem = false;
-				if (current_hour === 0) {
-					current_hour = 12;
-				}
-			}
+    updateClockDisplay();
 
-			period_atomic_number.innerHTML = 95 - 34 * Number(post_meridiem);
-			period_element_symbol.innerHTML = elements[95 - 34 * Number(post_meridiem)]["symbol"];
-			period_element_name.innerHTML = elements[95 - 34 * Number(post_meridiem)]["name"];
-			period_element_mass.innerHTML = elements[95 - 34 * Number(post_meridiem)]["mass"];
-
-		} else {
-			period_element.style.visibility = "hidden";
-		}
-		hour_element_symbol.innerHTML = elements[current_hour]["symbol"];
-		minute_element_symbol.innerHTML = elements[current_minute]["symbol"];
-		second_element_symbol.innerHTML = elements[current_second]["symbol"];
-		hour_atomic_number.innerHTML = current_hour;
-		minute_atomic_number.innerHTML = current_minute;
-		second_atomic_number.innerHTML = current_second;
-
-		if (display_element_name) {
-			hour_element_name.innerHTML = elements[current_hour]["name"];
-			minute_element_name.innerHTML = elements[current_minute]["name"];
-			second_element_name.innerHTML = elements[current_second]["name"];
-			showElements([hour_element_name, minute_element_name, second_element_name]);
-			display_24_hour ? period_element_name.style.visibility = "hidden" : period_element_name.style.visibility = "visible";
-		} else {
-			hideElements([hour_element_name, minute_element_name, second_element_name, period_element_name]);
-		}
-
-		if (display_element_mass) {
-			hour_element_mass.innerHTML = elements[current_hour]["mass"];
-			minute_element_mass.innerHTML = elements[current_minute]["mass"];
-			second_element_mass.innerHTML = elements[current_second]["mass"];
-			showElements([hour_element_mass, minute_element_mass, second_element_mass])
-			display_24_hour ? period_element_mass.style.visibility = "hidden" : period_element_mass.style.visibility = "visible";
-		} else {
-			hideElements([hour_element_mass, minute_element_mass, second_element_mass, period_element_mass]);
-		}
-
-		if (display_element_group) {
-			groupUpdate(elements[current_hour]["group"], hour_element);
-			groupUpdate(elements[current_minute]["group"], minute_element);
-			groupUpdate(elements[current_second]["group"], second_element);
-			groupUpdate("rare earth metals", period_element);
-		} else {
-			groupDefault(hour_element);
-			groupDefault(minute_element);
-			groupDefault(second_element);
-			groupDefault(period_element);
-		}
 	} else {
-		for (var e = 1; e <= 95; e++) {
-			var ce = table_elements[e].childNodes;
-			table_elements[e].style.borderColor = "#304457";
-			table_elements[e].style.backgroundColor = "#34495e";
-			ce[0].style.color = "#2c3e50";
-			ce[1].style.color = "#2c3e50";
-			if (e === 59) {
-				e = 60
-			} else if (e === 61) {
-				e = 94
-			}
 
-		}
+    updateTimeTableDisplay();
 
-		if (!display_24_hour) {
-			if (current_hour > 12) {
-				current_hour -= 12;
-				post_meridiem = true;
-				table_elements[61].style.borderColor = "#ce181e";
-				table_elements[61].style.backgroundColor = "#ed1c24";
-			} else {
-				post_meridiem = false;
-				if (current_hour === 0) {
-					current_hour = 12;
-				}
-				table_elements[95].style.borderColor = "#ce181e";
-				table_elements[95].style.backgroundColor = "#ed1c24";
-			}
-		}
-
-		if (current_hour > 0) {
-			table_elements[current_hour].style.borderColor = "#00599d";
-			table_elements[current_hour].style.backgroundColor = "#0066b3";
-		}
-
-		if (current_minute > 0) {
-			if (current_minute !== current_hour) {
-				table_elements[current_minute].style.borderColor = "#009353";
-				table_elements[current_minute].style.backgroundColor = "#00a65d";
-			} else {
-				csymbol = table_elements[current_minute].childNodes[1];
-				csymbol.style.color = "#009353";
-			}
-		}
-
-		if (current_second > 0) {
-			if (current_second !== current_hour && current_second !== current_minute) {
-				table_elements[current_second].style.borderColor = "#ccbe00";
-				table_elements[current_second].style.backgroundColor = "#e3d200";
-			} else if (current_second === current_hour && current_second === current_minute) {
-				catomic = table_elements[current_second].childNodes[0];
-				catomic.style.color = "#ccbe00";
-			} else {
-				csymbol = table_elements[current_second].childNodes[1];
-				csymbol.style.color = "#ccbe00";
-			}
-		}
 	}
 
   // Repeats the clock update every second
-	if (repeat) setTimeout(update, 1000, true);
+	if (repeat) setTimeout(updateTime, 1000, true);
 }
 
 // Updates a display box's color to correspond to the current element's group
-function groupUpdate(element_group, box) {
+function updateGroup(element_group, box) {
 	box.style.backgroundColor = box_colors[element_group][1];
 	box.style.borderColor = box_colors[element_group][0];
 }
 
 // Sets a box's color to the default color
-function groupDefault(box) {
+function defaultGroup(box) {
 	box.style.backgroundColor = box_colors[default_color][1];
 	box.style.borderColor = box_colors[default_color][0];
 }
 
-//
+// Makes all elements in the list visible
 function showElements(change_list) {
 	var element;
 	for (var i = 0; i < change_list.length; i++) {
@@ -370,7 +411,7 @@ function showElements(change_list) {
 	}
 }
 
-//
+// Makes all elements in the list invisible
 function hideElements(change_list) {
 	var element;
 	for (var i = 0; i < change_list.length; i++) {
@@ -379,19 +420,25 @@ function hideElements(change_list) {
 	}
 }
 
-function changeDisplay(cdisplay) {
-	display = !display;
-	if (display) {
-		cdisplay.innerHTML = "Table";
+// Switches between clock and time table display
+function switchDisplay(button_text) {
+	display_clock = !display_clock;
+
+  if (display_clock) {
+
+  	button_text.innerHTML = "Table";
 		showElements([clock, button_element_name, button_element_mass, button_element_group, about_button]);
-		hideElements([table, legend_button]);
-	} else {
-		cdisplay.innerHTML = "Clock";
-		showElements([table, legend_button]);
+		hideElements([time_table, legend_button]);
+
+  } else {
+
+  	button_text.innerHTML = "Clock";
+		showElements([time_table, legend_button]);
 		hideElements([clock, period_element, hour_element_name, minute_element_name, second_element_name, period_element_name, hour_element_mass, minute_element_mass, second_element_mass, period_element_mass, button_element_name, button_element_mass, button_element_group, about_button, about_box]);
-		showabout = false;
-	}
-	update(false);
+
+  }
+
+  updateTime(false);
 }
 
 // Opens the wikipedia page for the selected element
@@ -400,13 +447,14 @@ function openWikiPage(selected_element) {
   window.open(wiki + name);
 }
 
+// Generates the periodic table for the time table display when the page first loads
 function generatePeriodicTable() {
-  var table_body = document.getElementById("table-body");
+  var time_table_body = document.getElementById("time-table-body");
 
   // Encoding to easily store which squares of each row should be visible or invisible
   // Each row encoded as [A B C D]
   // Each row consists of, from left to right, A visible squares, followed by B invisible squares, then C visible, then D invisible
-  rows = [
+  var rows = [
     [1, 16, 1, 0],
     [2, 10, 6, 0],
     [2, 10, 6, 0],
@@ -419,25 +467,30 @@ function generatePeriodicTable() {
     [0, 2, 15, 1],
   ]
 
-  current_element = 1;
+  var current_element = 1;
 
+  // Create each table row
   for (var current_row = 0; current_row < rows.length; current_row++) {
     var table_row = document.createElement("tr");
 
+    // Create each square of the current row, using the row encoding to determine if it is visible or invisible
     for (var current_column = 0; current_column < 18; current_column++) {
 
+      // Create new HTML elements
       var table_data = document.createElement("td");
       var table_data_container = document.createElement("div");
       var table_data_atomic = document.createElement("p");
       var table_data_symbol = document.createElement("p");
 
-      table_data_container.classList.add("telement");
-      table_data_atomic.classList.add("tatomic");
-      table_data_symbol.classList.add("tsymbol");
+      table_data_container.classList.add("table-element");
+      table_data_atomic.classList.add("table-atomic-number");
+      table_data_symbol.classList.add("table-element-symbol");
 
+      // If the current square should be visible, according to the row encoding
       if (current_column < rows[current_row][0] || (current_column >= rows[current_row][0] + rows[current_row][1] && current_column < 18 - rows[current_row][3])) {
+
+        // Makes square visible and fills in element symbol, atomic number, name, and click event for element wiki page
         table_data_container.classList.add("show");
-        table_data_container.id = "e" + String(current_element);
         table_data_atomic.innerHTML = String(current_element);
         table_data_symbol.innerHTML = elements[current_element]["symbol"];
         table_data_container.onclick = function() {openWikiPage(this.childNodes[0].innerHTML)};
@@ -446,21 +499,58 @@ function generatePeriodicTable() {
 
         current_element++;
       } else {
+        // The current square shoud be invisible
         table_data_container.classList.add("hide");
       }
 
+      // Append newly created elements to the current row
       table_data_container.appendChild(table_data_atomic);
       table_data_container.appendChild(table_data_symbol);
       table_data.appendChild(table_data_container);
       table_row.appendChild(table_data);
     }
 
-    table_body.appendChild(table_row);
+    // Append row to the table body
+    time_table_body.appendChild(table_row);
 
   }
-
 }
 
-generatePeriodicTable();
+// Toggle button between on and off state
+function toggleButton(button) {
+  if (button.classList.contains("on")) {
+    button.classList.remove("on");
+    button.classList.add("off");
+  } else {
+    button.classList.remove("off");
+    button.classList.add("on");
+  }
+}
 
-update(true);
+function toggle24Hour(button) {
+  display_24_hour = !display_24_hour;
+  toggleButton(button);
+  updateTime(false);
+}
+
+function toggleElementName(button) {
+  display_element_name = !display_element_name;
+  toggleButton(button);
+  updateTime(false);
+}
+
+function toggleElementMass(button) {
+  display_element_mass = !display_element_mass;
+  toggleButton(button);
+  updateTime(false);
+}
+
+function toggleElementGroup(button) {
+  display_element_group = !display_element_group;
+  toggleButton(button);
+  updateTime(false);
+}
+
+
+generatePeriodicTable();
+updateTime(true);
